@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cy.pj.sys.dao.SysDeptDao">
+<select id="findObjects" resultType="map">
+         
+          select c.*,(
+                    select p.name 
+                    from sys_depts p
+                    where c.parentId=p.id
+                    ) parentName
+          from sys_depts c
+</select>
+</mapper>
