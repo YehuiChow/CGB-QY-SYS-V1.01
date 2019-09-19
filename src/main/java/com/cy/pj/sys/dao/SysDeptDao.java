@@ -1,4 +1,4 @@
-package com.cy.pj.sys.Dao;
+package com.cy.pj.sys.dao;
 
 import java.util.List;
 import java.util.Map;
