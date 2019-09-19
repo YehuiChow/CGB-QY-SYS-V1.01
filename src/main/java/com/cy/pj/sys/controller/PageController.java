@@ -1,7 +1,11 @@
 package com.cy.pj.sys.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+/**
+ * 孙嘉鸿
+ * @author AGQ阿根奇
+ *
+ */
 @Controller
 @RequestMapping("/")
 public class PageController {
