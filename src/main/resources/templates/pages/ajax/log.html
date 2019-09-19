@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+    <h1>Log Manage Page</h1>
+</div>
+<div>
+    <form>
+       <input type="text" id="nameId">
+       <button id="searchId" type="button">查询</button>
+    </form>
+    <br/>
+    <table border="1" width="100%" cellspacing="0" cellpadding="10">
+       <thead>
+        <tr>
+          <th>id</th>
+          <th>createdTime</th>
+        </tr>
+       </thead>
+       <tbody id="tbodyId">
+          <tr><td colspan="2">data loading ...</td></tr>
+       </tbody>
+    </table>
+</div>
+<script type="text/javascript" src="/bower_components/models/ajaxfk.js"></script>
+<script type="text/javascript">
+  window.onload=function(){
+	 var searchBtn=
+	 document.getElementById("searchId");
+	 searchBtn.onclick=doGetObjects;
+  }
+  function doGetObjects(){
+	var url="doFindPageObjects";
+	var params="pageCurrent=1";
+	$.getJSON(url,params,function(result){
+		doHandleResponse(result);
+	});
+  }
+  function doHandleResponse(result){
+	  if(result.state==1){
+		doSetTableBodyRows(result.data.records);  
+	  }else{
+		 alert(result.message);
+	  }
+  }
+  function doSetTableBodyRows(records){
+	  var tBody=document.getElementById("tbodyId");
+	  tBody.innerHTML="";
+	  for(let i in records){
+		 let tr=document.createElement("tr");
+		 let idTd=document.createElement("td");
+		 idTd.innerText=records[i].id;
+		 let timeTd=document.createElement("td");
+		 timeTd.innerText=records[i].createdTime;
+		 tr.appendChild(idTd);
+		 tr.appendChild(timeTd);
+		 tBody.appendChild(tr);
+	  }
+  }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
